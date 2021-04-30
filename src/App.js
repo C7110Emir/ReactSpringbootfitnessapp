@@ -1,4 +1,3 @@
-import './App.css';
 import FirstHomePage from "./components/FirstHomePage.js"
 import LoginSignup from "./components/LoginSignup.js"
 

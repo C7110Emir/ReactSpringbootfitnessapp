@@ -1,9 +1,10 @@
 import React from 'react'
+import style from "./loginsignup.module.css"
 
 function LoginSignup() {
     return (
-        <div>
-            
+        <div className>
+           
         </div>
     )
 }
