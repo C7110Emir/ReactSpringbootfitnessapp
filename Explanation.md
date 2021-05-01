@@ -1,1 +1,1 @@
-A web app with React, Spring-boot, h2
+A web app with React, Spring-boot(java), h2 since its most recommended database to use with springboot 
