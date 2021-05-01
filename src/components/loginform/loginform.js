@@ -12,27 +12,34 @@ function Loginform() {
         <div className={style.outerDiv}>
             <div className={style.logindiv}>
                 <form action="" className={style.formtag} onSubmit={submitButton}>
-                    <h1 className={style.logintitle}>Log In</h1>
-                    <hr/>
-                    <label for="username" className={style.loginusername}>Username:</label><br/>
-                    <input type="text" id="username" className={style.loginusernameinput} placeholder="Username"/><br/><br/>
-                    <label for="loginpassword"  className={style.loginpassword}>Password:</label><br/>
-                    <input type="password" id="loginpassword" className={style.loginpassword} maxLength="6" placeholder="Password"/><br/><br/>
+                    <h1 className={style.logintitle}>Log In</h1><br/>
+                    <hr/><br/><br/>
+                    <label for="username" className={style.loginusername} className={style.text}>Username:</label><br/><br/>
+                    <input type="text" id="username" className={style.loginusernameinput} placeholder="Username"/><br/><br/><br/><br/>
+                    <label for="loginpassword"  className={style.loginpassword} className={style.text}>Password:</label><br/><br/>
+                    <input type="password" id="loginpassword" className={style.loginpassword} maxLength="6" placeholder="Password"/><br/><br/><br/>
+                    <p className={style.loginnoaccount}>You don't have an account?</p><br/><br/>
+                    
+
+
                     <button type="submit" disabled>Log In</button> 
                 </form>          
             </div> 
             <div className={style.SignUpdiv}>
                 <form action="" className={style.signupform}>
-                    <h1 className={style.signuptitle}>Signup</h1>
-                    <label for="signupusername" className={style.signupusername}>Username:</label><br/><br/>
-                    <input type="text" id="signupusername" className={style.signupusernameinput} placeholder="Username"/><br/><br/>
-                    <label for="signuppassword" className={style.signuppassword}>Password:</label><br/><br/>
-                    <input type="password" id="signuppassword" className={style.signuppasswordinput} placeholder="Password"/><br/><br/>
-                    <label for="reenterpass" className={style.reenterpassword}>Re-enter Password:</label><br/><br/>
-                    <input id="reenterpass" type="password" className={style.reenterpasswordinput} placeholder="Re-enter Password"/><br/><br/>
-                    <label for="signupemail" className={style.signupemail}>Email:</label><br/><br/>
-                    <input type="email" id="signupemail" className={style.signupemailinput} placeholder="example@example.com"/><br/><br/>
-                    <label for="signupcountry" className={style.signupcountry}>Country:</label>
+                    <h1 className={style.signuptitle}>Sign Up</h1><br/>
+                    <hr></hr><br/><br/>
+                    <label for="signupusername" className={style.signupusername} className={style.text}>Username:</label><br/><br/>
+                    <input type="username" id="signupusername" className={style.signupusernameinput} className={style.input} placeholder="Username"/><br/><br/>
+                    <label for="signuppassword" className={style.signuppassword} className={style.text}>Password:</label><br/><br/>
+                    <input type="password" id="signuppassword" className={style.signuppasswordinput} className={style.input} placeholder="Password" maxLength="6"/><br/><br/>
+                    <label for="reenterpass" className={style.reenterpassword} className={style.text}>Re-enter Password:</label><br/><br/>
+                    <input id="reenterpass" type="password" className={style.reenterpasswordinput} className={style.input} placeholder="Re-enter Password"/><br/><br/>
+                    <label for="signupemail" className={style.signupemail} className={style.text}>Email:</label><br/><br/>
+                    <input type="email" id="signupemail" className={style.signupemailinput} className={style.input} placeholder="example@example.com"/><br/><br/>
+                    <label for="signupcountry" className={style.signupcountry} className={style.text}>Country:</label><br/><br/>
+                    <input type="country" id="signupcountry" className={style.signupcountryinput} className={style.input} placeholder="Country"/><br/><br/>
+                    <button type="submit" className={style.Signupbutton} disabled>Sign Up</button>
                 </form>
             </div>
 
