@@ -50,10 +50,6 @@ function SignUpForm() {
             setUserCountry("")
             setUserEmail("")
             setUserPassword("")
-            emailref.current.style.borderColor="red"
-            passref.current.style.borderColor="red"
-            nameRef.current.style.borderColor="red"
-            countryref.current.style.borderColor="red"
             return;
         }
     
@@ -63,7 +59,6 @@ function SignUpForm() {
             setUserCountry("")
             setUserEmail("")
             setUserPassword("")
-            emailref.current.style.borderColor="red"
             return;
         }
         

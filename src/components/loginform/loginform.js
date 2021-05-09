@@ -28,6 +28,7 @@ function Loginform() {
       event.preventDefault ();
         
       console.log(data)
+      
     }
     return (
         <div className={style.outerDiv}>
