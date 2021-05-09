@@ -1,4 +1,5 @@
 import style from "./loginform.module.css"
+import "./style.css"
 import {Form} from 'react-bootstrap';
 import React, { useEffect, useState } from "react";
 import TextField from '@material-ui/core/TextField';
@@ -13,22 +14,20 @@ function Loginform() {
       
      useEffect(() => {
        getData()
-     });
+     },[user_password]);
 
       const getData = () =>{
         axios.get("http://localhost:8080/api/users/").then((res) => {
             setData(res.data);
         });
+        
       }
 
-      const handleUserInput = async event => {
+    const handleUserInput = async event => {
 
-        event.preventDefault ();
+      event.preventDefault ();
         
-        
-        console.log(data);
-
-     
+      console.log(data)
     }
     return (
         <div className={style.outerDiv}>
@@ -39,7 +38,7 @@ function Loginform() {
                    
                     <hr/><br/><br/>
                     
-                    <TextField className = {style.text_input} id="outlined-basic" onChange={e => setUserName(e.target.value)} label="User Name" variant="outlined" /><br/><br/>
+                    <TextField className = {style.text_input} id="outlined-basic" value={user_name} onChange={e => setUserName(e.target.value)} label="User Name" variant="outlined" /><br/><br/>
                     <TextField className = {style.text_input} id="outlined-basic" onChange={e => setUserPassword(e.target.value)} label="Password" variant="outlined" /> <br/><br/>
                
                 <Button onClick={handleUserInput} >Log In</Button>

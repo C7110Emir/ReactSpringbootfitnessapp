@@ -1,8 +1,7 @@
-
-
+import "./style.css"
 import style from "./loginform.module.css"
 import {Form} from 'react-bootstrap';
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState , useRef} from "react";
 import axios from 'axios';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -15,12 +14,28 @@ function SignUpForm() {
     const [user_password, setUserPassword] = useState("");
     const [user_email, setUserEmail] = useState("");
     const [user_country, setUserCountry] = useState("");
-     
+    const nameRef = useRef(null)
+    const passref = useRef(null)
+    const emailref = useRef(null)
+    const countryref = useRef(null)
+    const [data, setData] = useState([])
+
+    useEffect(() =>{
+        getdatabasedata()
+    })
+
+    const getdatabasedata = () =>{
+        axios.get("http://localhost:8080/api/users/").then((res) =>{
+            setData(res.data)
+        })
+    }
     
       const handleUserInput = async event => {
-       
 
+        
+           
         event.preventDefault ();
+
 
         const user_info = {
           user: user_name,
@@ -28,10 +43,47 @@ function SignUpForm() {
           email: user_email,
           country: user_country
         };
+
+        if(user_name == "" || user_password == "" || user_country.value == "" || user_email == ""){
+            alert("Please enter your information")
+            setUserName("")
+            setUserCountry("")
+            setUserEmail("")
+            setUserPassword("")
+            emailref.current.style.borderColor="red"
+            passref.current.style.borderColor="red"
+            nameRef.current.style.borderColor="red"
+            countryref.current.style.borderColor="red"
+            return;
+        }
     
-    
-        console.log(user_info)
+         if(user_info.email.includes('@') == false || user_info.email.includes('.com') == false){
+            alert("Please enter valid email")
+            setUserName("")
+            setUserCountry("")
+            setUserEmail("")
+            setUserPassword("")
+            emailref.current.style.borderColor="red"
+            return;
+        }
         
+        if(data.map((element)=>{
+            if(element.user === user_info.user){
+                alert("Username exists, Please enter new Username")
+                return true;
+            }if(element.email === user_info.email){
+                alert("Email exists, Please enter new Email")
+                return true;
+            }
+        })){
+            setUserName("")
+            setUserCountry("")
+            setUserEmail("")
+            setUserPassword("")
+            return
+        }
+        console.log("Passed")
+       
         try {
             
             const token = await axios.post('http://localhost:8080/api/users/', user_info);
@@ -58,10 +110,10 @@ function SignUpForm() {
                 <h1 className={style.signuptitle}>Register</h1><br/>
                 <hr></hr><br/>
                 
-               <TextField className = {style.text_input} id="outlined-basic" onChange={e => setUserName(e.target.value)} label="User Name" variant="outlined" /><br/><br/>
-                <TextField className = {style.text_input} id="outlined-basic" onChange={e => setUserPassword(e.target.value)} label="Password" variant="outlined" /> <br/><br/>
-                <TextField className = {style.text_input} id="outlined-basic" onChange={e => setUserEmail(e.target.value)} label="Re-enter Password" variant="outlined" /><br/><br/>
-                <TextField className = {style.text_input} id="outlined-basic" onChange={e => setUserCountry(e.target.value)} label="Country" variant="outlined" /><br/><br/>
+               <TextField className = {style.text_input} ref={nameRef} value={user_name} id="outlined-basic" onChange={e => setUserName(e.target.value)} label="User Name" variant="outlined" /><br/><br/>
+                <TextField className = {style.text_input} ref={passref}  value={user_password} id="outlined-basic" onChange={e => setUserPassword(e.target.value)} label="Password" variant="outlined" /> <br/><br/>
+                <TextField className = {style.text_input} ref={emailref} value={user_email} id="outlined-basic" onChange={e => setUserEmail(e.target.value)} label="Email" variant="outlined" /><br/><br/>
+                <TextField className = {style.text_input} ref={countryref} value={user_country} id="outlined-basic" onChange={e => setUserCountry(e.target.value)} label="Country" variant="outlined" /><br/><br/>
                 
                 <Button onClick={handleUserInput} >Register</Button>
                 
