@@ -16,4 +16,3 @@ export default App;
 
 
 
-//my api key is AIzaSyDgDGtxhNywkDxN8cBgFwvj7cYXCbEKHow
