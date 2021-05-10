@@ -59,9 +59,8 @@ function Loginform() {
                     <hr/><br/><br/>
                     
                     <TextField className = {style.text_input} id="outlined-basic" value={user_name} onChange={e => setUserName(e.target.value)} label="User Name" variant="outlined" /><br/><br/>
-                    <TextField className = {style.text_input} id="outlined-basic" value={user_password} onChange={e => setUserPassword(e.target.value)} label="Password" variant="outlined" /> <br/><br/>
-               
-                <Button onClick={handleUserInput} >Log In</Button>
+                    <TextField className = {style.text_input} id="outlined-password-input" label="Password" type="password" value={user_password} onChange={e => setUserPassword(e.target.value)} autoComplete="current-password" variant="outlined"/> <br/><br/>
+                    <Button onClick={handleUserInput} >Log In</Button>
                    {/*
                     <label for="loginpassword"  className={style.loginpassword} className={style.text}>Password:</label><br/><br/>
                     <input type="password" id="loginpassword" className={style.loginpassword} className={style.logininput}  maxLength="6" placeholder="Password"/><br/><br/><br/>

@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <LoginSignup/>
+        <FirstHomePage/>
         
       </header>
     </div>
@@ -13,3 +13,7 @@ function App() {
 }
 
 export default App;
+
+
+
+//my api key is AIzaSyDgDGtxhNywkDxN8cBgFwvj7cYXCbEKHow
