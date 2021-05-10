@@ -1,3 +1,4 @@
+
 import "./style.css"
 import style from "./loginform.module.css"
 import {Form} from 'react-bootstrap';
@@ -43,8 +44,9 @@ function SignUpForm() {
           email: user_email,
           country: user_country
         };
+        console.log(data)
 
-        if(user_name == "" || user_password == "" || user_country.value == "" || user_email == ""){
+        if(user_name == "" || user_password == "" || user_country == "" || user_email == ""){
             alert("Please enter your information")
             setUserName("")
             setUserCountry("")
@@ -62,19 +64,25 @@ function SignUpForm() {
             return;
         }
         
-        if(data.map((element)=>{
-            if(element.user === user_info.user){
-                alert("Username exists, Please enter new Username")
-                return true;
-            }if(element.email === user_info.email){
-                alert("Email exists, Please enter new Email")
-                return true;
+        const ifexistsarray = []
+        data.map((element)=>{
+            if(element.userName == user_name){
+                ifexistsarray.push(true)
             }
-        })){
+            else if(element.email == user_email){
+                ifexistsarray.push("koala")
+            }
+        })
+        
+        if(ifexistsarray.includes(true)){
+            alert("username exists")
             setUserName("")
-            setUserCountry("")
+            return
+
+        }
+        if(ifexistsarray.includes("koala")){
+            alert("email exists")
             setUserEmail("")
-            setUserPassword("")
             return
         }
         console.log("Passed")
@@ -87,8 +95,12 @@ function SignUpForm() {
             console.log(error.response.data.error)
             }
 
-            
-          
+        console.log("i should have appended the data")
+        console.log(data)
+        setUserName("")
+        setUserCountry("")
+        setUserEmail("")
+        setUserPassword("")
       };
         
         

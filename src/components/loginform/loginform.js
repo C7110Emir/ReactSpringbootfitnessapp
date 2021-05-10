@@ -28,7 +28,26 @@ function Loginform() {
       event.preventDefault ();
         
       console.log(data)
-      
+      const mapresponse = []
+      data.map((element)=>{
+        if(element.userName == user_name && element.password == user_password){
+          mapresponse.push(true)
+        }
+        else if(element.userName != user_name || element.password != user_password){
+          mapresponse.push(false)
+        }
+      })
+      console.log(mapresponse);
+      if(!(mapresponse.includes(true))){
+        alert("Your username or password doesn't exist, Please try again") 
+        setUserPassword("")
+      }
+      else if(mapresponse.includes(true)){
+        alert("Logged in successfully")
+        setUserName("")
+        setUserPassword("")
+      }
+
     }
     return (
         <div className={style.outerDiv}>
@@ -40,7 +59,7 @@ function Loginform() {
                     <hr/><br/><br/>
                     
                     <TextField className = {style.text_input} id="outlined-basic" value={user_name} onChange={e => setUserName(e.target.value)} label="User Name" variant="outlined" /><br/><br/>
-                    <TextField className = {style.text_input} id="outlined-basic" onChange={e => setUserPassword(e.target.value)} label="Password" variant="outlined" /> <br/><br/>
+                    <TextField className = {style.text_input} id="outlined-basic" value={user_password} onChange={e => setUserPassword(e.target.value)} label="Password" variant="outlined" /> <br/><br/>
                
                 <Button onClick={handleUserInput} >Log In</Button>
                    {/*
