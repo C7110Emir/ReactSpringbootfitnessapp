@@ -1,7 +1,7 @@
 import React from 'react'
 import NavBar from "./navbar/navbar"
 import Cardcollection from "./cardcontent/cardcollection"
-import Rightcontent from "./rightsidecontent/rightcontent"
+import MapContainer from "./rightsidecontent/rightcontent"
 import style from "./homepage.module.css"
 
 function FirstHomePage() {
@@ -10,7 +10,7 @@ function FirstHomePage() {
             <NavBar />
             <div className={style.uppercontent}>
                 <Cardcollection/>
-                <Rightcontent/>
+                <MapContainer/>
             </div>
             
         </div>
